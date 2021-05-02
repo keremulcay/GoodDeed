@@ -18,14 +18,8 @@ import Community from './Pages/Community/Community';
 import Venues from './Pages/Venues/Venues';
 
 const Home = () => (
-  <div className="rs-grid-container-fluid app-container">
-    <div className="nav-wrapper">
-      {/* <Navbar expand="lg" className="w-100">
-        <Navbar.Header>
-          <a href="#" className="navbar-brand logo">RSUITE</a>
-        </Navbar.Header>
-        <Navbar.Body className="rs-nav-horizontal"> */}
-          <Nav horizontal>
+  <div>
+    <Nav>
             <Nav.Item icon={<Icon icon="home" />} >Home</Nav.Item>
             <Nav.Item>News</Nav.Item>
             <Nav.Item>Products</Nav.Item>
@@ -37,11 +31,7 @@ const Home = () => (
           </Nav>
           <Nav pullRight>
             <Nav.Item icon={<Icon icon="cog" />} >Settings</Nav.Item>
-          </Nav>
-        {/* </Navbar.Body>
-      </Navbar> */}
-    </div>
-
+      </Nav>
     <AllEvents />
   </div>
 );
