@@ -16,32 +16,11 @@ import NewEvent from './Components/NewEvent';
 import ViewEvent from './Components/ViewEvent';
 import Community from './Pages/Community/Community';
 import Venues from './Pages/Venues/Venues';
+import NavigationBar from './Components/NavigationBar';
 
 const Home = () => (
   <div className="rs-grid-container-fluid app-container">
-    <div className="nav-wrapper">
-      {/* <Navbar expand="lg" className="w-100">
-        <Navbar.Header>
-          <a href="#" className="navbar-brand logo">RSUITE</a>
-        </Navbar.Header>
-        <Navbar.Body className="rs-nav-horizontal"> */}
-          <Nav horizontal>
-            <Nav.Item icon={<Icon icon="home" />} >Home</Nav.Item>
-            <Nav.Item>News</Nav.Item>
-            <Nav.Item>Products</Nav.Item>
-            {/* <Dropdown title="About">
-              <Dropdown.Item>Company</Dropdown.Item>
-              <Dropdown.Item>Team</Dropdown.Item>
-              <Dropdown.Item>Contact</Dropdown.Item>
-            </Dropdown> */}
-          </Nav>
-          <Nav pullRight>
-            <Nav.Item icon={<Icon icon="cog" />} >Settings</Nav.Item>
-          </Nav>
-        {/* </Navbar.Body>
-      </Navbar> */}
-    </div>
-
+    <NavigationBar></NavigationBar>
     <AllEvents />
   </div>
 );

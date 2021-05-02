@@ -58,8 +58,20 @@ export const commentOnEvent = /* GraphQL */ `
   }
 `;
 export const createVenue = /* GraphQL */ `
-  mutation CreateVenue($input: CreateVenueInput!) {
-    createVenue(input: $input) {
+  mutation CreateVenue(
+    $title: String!
+    $description: String!
+    $location: String!
+    $rating: Int
+    $image_url: String!
+  ) {
+    createVenue(
+      title: $title
+      description: $description
+      location: $location
+      rating: $rating
+      image_url: $image_url
+    ) {
       id
       title
       description
