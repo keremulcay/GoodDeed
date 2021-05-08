@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import "semantic-ui-css/semantic.min.css";
 import 'react-datepicker/dist/react-datepicker.css';
@@ -8,34 +8,54 @@ import { ApolloProvider } from "react-apollo";
 import AWSAppSyncClient, { defaultDataIdFromObject } from "aws-appsync";
 import { Rehydrated } from "aws-appsync-react";
 
-import { Navbar, Nav, Icon } from 'rsuite';
-
 import './App.css';
-import AllEvents from './Components/AllEvents';
+import ShowEvents from './Components/ShowEvents';
 import NewEvent from './Components/NewEvent';
 import ViewEvent from './Components/ViewEvent';
+import MyEvent from './Components/MyEvent';
 import Community from './Pages/Community/Community';
 import Venues from './Pages/Venues/Venues';
+import Profile from './Pages/Profile/Profile';
+import Landing from './Pages/Landing/Landing';
 import NavigationBar from './Components/NavigationBar';
+
+import background from './images/pexels-aleksey-kuprikov-3493777.jpg'
+import NavBar from './Components/NavBar/NavBar'
+import Overlay from './Components/Overlay/Overlay'
+
 
 const Home = () => (
   <div className="rs-grid-container-fluid app-container">
-    <NavigationBar></NavigationBar>
-    <AllEvents />
+    <Landing/>
   </div>
 );
 
-const App = () => (
+
+function App() {
+    const [overlay, setOverlay] = useState(false)
+    
+function closeOverlay() {
+    setOverlay(false);}
+
+function openOverlay() {
+    setOverlay(true);}
+
+var logged = true;
+return (
   <Router>
-    <div>
+    <div style={{ backgroundImage: `url(${background})`, backgroundSize: "cover", backgroundAttachment: "fixed", backgroundRepeat: "no-repeat", height: "auto", minHeight: "100vh"}}>
+    <NavBar logged={logged} openOverlay={openOverlay}/>
+    { overlay ? (<Overlay closeOverlay={closeOverlay}/>) : (<div></div>)}
       <Route exact={true} path="/" component={Home} />
       <Route path="/event/:id" component={ViewEvent} />
+      <Route exact={true} path="/profile" component={Profile} />
+      <Route path="/profile/event/:id" component={MyEvent} />
       <Route path="/newEvent" component={NewEvent} />
       <Route path="/community" component={Community} />
       <Route path="/venues" component={Venues} />
     </div>
   </Router>
-);
+);}
 
 const client = new AWSAppSyncClient({
   url: appSyncConfig.aws_appsync_graphqlEndpoint,

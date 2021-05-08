@@ -36,6 +36,15 @@ class NewEvent extends Component {
         this.setState({ event });
     }
 
+
+    handleCategoryChange(field, { target: { value } }) {
+        const { event } = this.state;
+        const category = value;
+        event[field] = value;
+        console.log(event)
+    }
+
+
     handleDateChange(field, value) {
         this.handleChange(field, { target: { value: value.format() } });
     }
@@ -46,6 +55,7 @@ class NewEvent extends Component {
 
         const { createEvent, history } = this.props;
         const { event } = this.state;
+        event["where"] += "$" + event["category"]
 
         await createEvent({ ...event });
 
@@ -84,6 +94,10 @@ class NewEvent extends Component {
                     <div className="field required eight wide">
                         <label htmlFor="where">Where</label>
                         <input type="text" id="where" value={event.where} onChange={this.handleChange.bind(this, 'where')} />
+                    </div>
+                    <div className="field required eight wide">
+                        <label htmlFor="category">Category</label>
+                        <input type="text" id="category" onChange={this.handleCategoryChange.bind(this, 'category')} />
                     </div>
                     <div className="field required eight wide">
                         <label htmlFor="description">Description</label>

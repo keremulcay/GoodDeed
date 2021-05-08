@@ -5,10 +5,11 @@ import moment from 'moment';
 
 import QueryGetEvent from "../GraphQL/QueryGetEvent";
 import SubsriptionEventComments from "../GraphQL/SubsriptionEventComments";
+import NewRegistry from "./NewRegistry";
 
-import NewComment from "./NewComment";
 
-class EventComments extends Component {
+
+class EventRegister extends Component {
 
     subscription;
 
@@ -41,8 +42,7 @@ class EventComments extends Component {
             <div className="ui items">
                 <div className="item">
                     <div className="ui comments">
-                        <h4 className="ui dividing header">Registrations</h4>
-                        {[].concat(items).sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map(this.renderComment)}
+                        <NewRegistry eventId={eventId} />
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@ class EventComments extends Component {
 
 }
 
-const EventCommentsWithData = graphql(
+const EventRegisterWithData = graphql(
     QueryGetEvent,
     {
         options: ({ eventId: id }) => ({
@@ -86,6 +86,6 @@ const EventCommentsWithData = graphql(
             })
         }),
     },
-)(EventComments);
+)(EventRegister);
 
-export default EventCommentsWithData;
+export default EventRegisterWithData;

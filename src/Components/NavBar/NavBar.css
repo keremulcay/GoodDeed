@@ -1,0 +1,40 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 2.5vh;
+  height: 60px;
+  font-size: 24px;
+  background-color: #d1d1d1af;
+  border-radius: 0 0 20px 20px;
+  margin: 0 20px;
+}
+
+.nav-left {
+  margin-right: 20vw;
+}
+
+.nav-right {
+  margin-left: 25vw;
+}
+
+.nav-item {
+  margin-left: 2vw;
+  color: #191919d7;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: white;
+  padding: 2% 1vw;
+  border-radius: 5px;
+}
+
+.nav-item1 {
+  margin-left: 2vw;
+  color: #191919;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 2% 1vw;
+  border-radius: 5px;
+}

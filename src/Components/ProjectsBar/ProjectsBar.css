@@ -1,0 +1,47 @@
+div.bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 1.5vh;
+  height: 8vh;
+  font-size: 24px;
+  margin: 0 2%;
+  background-color: #d1d1d1af;
+  border-radius: 10px;
+}
+
+.bar-left {
+  margin-right: 5vw;
+}
+
+.bar-center {
+  color: black;
+  font-size: 18px;
+}
+
+.category-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.bar-right {
+  margin-left: 5vw;
+}
+
+.category-box {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin: 0 10px;
+}
+
+.sort-box {
+  padding: 10px 10px;
+  margin: 0 10px;
+}
+
+.filter-box {
+  border: 1px solid gray;
+  padding: 10px 10px;
+  margin: 0 10px;
+}
