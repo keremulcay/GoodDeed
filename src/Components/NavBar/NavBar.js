@@ -25,7 +25,7 @@ export default function NavBar(props) {
         return (
             <nav>
                 <div className="nav-left"> 
-                    <Link className="nav-item1" to="/about"> Good Deed Platform </Link>
+                    <Link className="nav-item1" to="/"> Good Deed Platform </Link>
                 </div>
                 <div className="nav-right"> 
                 <Link className="nav-item1" to="/about"> About </Link>

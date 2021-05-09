@@ -40,7 +40,7 @@ function closeOverlay() {
 function openOverlay() {
     setOverlay(true);}
 
-var logged = true;
+var logged = false;
 return (
   <Router>
     <div style={{ backgroundImage: `url(${background})`, backgroundSize: "cover", backgroundAttachment: "fixed", backgroundRepeat: "no-repeat", height: "auto", minHeight: "100vh"}}>

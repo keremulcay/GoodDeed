@@ -11,7 +11,7 @@ div.bar {
 }
 
 .bar-left {
-  margin-right: 5vw;
+  margin-right: 34vw;
 }
 
 .bar-center {
@@ -29,10 +29,20 @@ div.bar {
 }
 
 .category-box {
+  background-color: rgb(226, 226, 226);
+  color: #494949;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin: 0 10px;
+  border: none;
+}
+
+.active-category {
   background-color: white;
   border-radius: 5px;
   padding: 10px 10px;
   margin: 0 10px;
+  border: none;
 }
 
 .sort-box {

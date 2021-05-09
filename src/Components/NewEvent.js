@@ -12,6 +12,8 @@ import moment from 'moment';
 
 import { nearest15min } from "../Utils";
 import DateTimePickerCustomInput from "./DateTimePickerCustomInput";
+import CategoryDropdown from "./CategoryDropdown";
+
 
 class NewEvent extends Component {
 
@@ -24,24 +26,24 @@ class NewEvent extends Component {
             name: '',
             when: nearest15min().format(),
             where: '',
+            category: '',
             description: '',
         }
     };
 
+    category = "All";
+
     handleChange(field, { target: { value } }) {
         const { event } = this.state;
-
         event[field] = value;
-
         this.setState({ event });
     }
 
-
-    handleCategoryChange(field, { target: { value } }) {
+    handleCategoryChange = evt => {
         const { event } = this.state;
-        const category = value;
-        event[field] = value;
-        console.log(event)
+        console.log(evt.value)
+        event["category"] = evt.value;
+        this.setState({ event });
     }
 
 
@@ -97,8 +99,8 @@ class NewEvent extends Component {
                     </div>
                     <div className="field required eight wide">
                         <label htmlFor="category">Category</label>
-                        <input type="text" id="category" onChange={this.handleCategoryChange.bind(this, 'category')} />
                     </div>
+                    <CategoryDropdown handleChange={this.handleCategoryChange}/>
                     <div className="field required eight wide">
                         <label htmlFor="description">Description</label>
                         <textarea name="description" id="description" rows="10" value={event.description}

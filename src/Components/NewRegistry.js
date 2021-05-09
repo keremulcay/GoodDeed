@@ -60,7 +60,7 @@ class NewRegistry extends Component {
             <form className="ui reply form" style={{display: registered ? ("none") : ("block") }}>
                 <h4 className="ui dividing header">Register with email</h4>
                 <div className="field">
-                    <textarea value={comment.content} onChange={this.handleChange} disabled={loading}></textarea>
+                    <input value={comment.content} onChange={this.handleChange} disabled={loading}></input>
                 </div>
                 <button className={`ui blue labeled submit icon button ${loading ? 'loading' : ''}`}
                     disabled={loading} onClick={this.handleSubmit}>
