@@ -23,16 +23,16 @@ import background from './images/pexels-aleksey-kuprikov-3493777.jpg'
 import NavBar from './Components/NavBar/NavBar'
 import Overlay from './Components/Overlay/Overlay'
 
-
 const Home = () => (
   <div className="rs-grid-container-fluid app-container">
     <Landing/>
   </div>
 );
 
-
 function App() {
     const [overlay, setOverlay] = useState(false)
+    const [logged, setLogged] = useState(false)
+    const [user, setUser] = useState(false)
     
 function closeOverlay() {
     setOverlay(false);}
@@ -40,15 +40,23 @@ function closeOverlay() {
 function openOverlay() {
     setOverlay(true);}
 
-var logged = false;
+function loggedIn() {
+    setLogged(true)
+}
+
+function loggedOut() {
+    setLogged(false)
+}
+
+
 return (
   <Router>
-    <div style={{ backgroundImage: `url(${background})`, backgroundSize: "cover", backgroundAttachment: "fixed", backgroundRepeat: "no-repeat", height: "auto", minHeight: "100vh"}}>
-    <NavBar logged={logged} openOverlay={openOverlay}/>
-    { overlay ? (<Overlay closeOverlay={closeOverlay}/>) : (<div></div>)}
+    <div key={logged}style={{ backgroundImage: `url(${background})`, backgroundSize: "cover", backgroundAttachment: "fixed", backgroundRepeat: "no-repeat", height: "auto", minHeight: "100vh"}}>
+    <NavBar key={logged} logged={logged} openOverlay={openOverlay}/>
+    { overlay ? (<Overlay closeOverlay={closeOverlay} loggedIn={loggedIn} setUser={setUser} />) : (<div></div>)}
       <Route exact={true} path="/" component={Home} />
       <Route path="/event/:id" component={ViewEvent} />
-      <Route exact={true} path="/profile" component={Profile} />
+      <Route exact={true} path="/profile" component={() => <Profile user={user} loggedOut={loggedOut} />} />
       <Route path="/profile/event/:id" component={MyEvent} />
       <Route path="/newEvent" component={NewEvent} />
       <Route path="/community" component={Community} />

@@ -24,8 +24,8 @@ class MyEvent extends Component {
                             <div className="header">{event.name}</div>
                             <div className="extra"><i className="icon calendar"></i>{moment(event.when).format('LL')}</div>
                             <div className="extra"><i className="icon clock"></i>{moment(event.when).format('LT')}</div>
-                            <div className="extra"><i className="icon marker"></i>{event.where}</div>
-                            <div className="description">{event.description}</div>
+                            <div className="extra"><i className="icon marker"></i>{event.where.split("$")[0]}</div>
+                                <div className="extra"><i className="icon marker"></i>{event.where.split("$")[1]}</div>                            <div className="description">{event.description}</div>
                             </div>
                             <div className="extra">
                                 <EventComments eventId={event.id} comments={event.comments} />

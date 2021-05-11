@@ -46,12 +46,14 @@ class AllEvents extends Component {
         <Link to={`profile/event/${event.id}`} className="card" key={event.id}>
             <div className="content">
                 <div className="header">{event.name}</div>
+                <p style={{marginTop: "1vh"}}>{event.where.split("$")[1]}</p>
+
             </div>
             <div className="content">
                 <p><i className="icon calendar"></i>{moment(event.when).format('LL')}</p>
                 <p><i className="icon clock"></i>{moment(event.when).format('LT')}</p>
-                <p><i className="icon marker"></i>{event.where}</p>
-            </div>
+                                <div className="extra"><i className="icon marker"></i>{event.where.split("$")[0]}</div>
+              </div>
             <div className="content">
                 <div className="description"><i className="icon info circle"></i>{event.description}</div>
             </div>

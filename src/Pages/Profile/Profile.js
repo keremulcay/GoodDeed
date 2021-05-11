@@ -1,13 +1,17 @@
 import React from 'react';
 import { CgProfile } from 'react-icons/cg';
+import { Redirect, withRouter } from 'react-router-dom';
 import './Profile.css';
 import background from '../../images/pexels-aleksey-kuprikov-3493777.jpg'
 import AllEvents from '../../Components/AllEvents';
 
+function Profile(props) {
 
-const initialForm2State = { adName: 'testAd', brandName: 'testBrand' }
 
-export default function Profile() {
+    function signOut() {
+        props.loggedOut()
+        return <Redirect to="/" />
+    }
 
     /* Renders and returns 4 ProjectCard components to be displayed */
 function renderProjectCards() {
@@ -18,17 +22,15 @@ function renderProjectCards() {
     )
 }
 
-
-
 		return(
             <div >
 			<div id="profile-container">
-				< CgProfile id="profile-icon" />
-					<h1 id="brand-name">Timur</h1>
+					<h1 style={{color: "white", marginTop: "45px"}} id="name">{props.user}</h1>
+                    <a className="logout-button" onClick={signOut} href="/" id="sign-in-btn"> Sign Out </a>
                     { renderProjectCards() }
-						<button className="logout-button" id="sign-in-btn"> Sign Out </button>
 			</div>
             </div>
 		)
 }
 
+export default withRouter(Profile)

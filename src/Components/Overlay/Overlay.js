@@ -6,6 +6,18 @@ import { MdNavigateNext } from 'react-icons/md';
 export default function Overlay(props) {
 
     const [form, setForm] = useState("login")
+    const [userName, setUserName] = useState("")
+
+    function signIn() {
+        props.loggedIn()
+        props.closeOverlay()
+    }
+
+    function register() {
+        props.setUser(userName)
+        props.loggedIn()
+        props.closeOverlay()
+    }
 
     function loginForm() {
         return(
@@ -13,31 +25,35 @@ export default function Overlay(props) {
             <div id="login-form-left">
                 <h2> Sign In</h2>
                 <input id="login-input" placeholder="E-mail"></input>
-                <input id="login-input" placeholder="Password"></input>
+                <input type="password" id="login-input" placeholder="Password"></input>
                 <a onClick={() => setForm("register")} style={{marginTop: "15px", cursor: "pointer"}}>Don't have an account? Sign Up</a>
                 <a onClick={() => setForm("register")} style={{marginTop: "15px", cursor: "pointer"}}>Forgot your password?</a>
             </div>
             <div>
-                < MdNavigateNext onClick= { () => {props.closeOverlay()}} id="next-icon"/>
+                < MdNavigateNext onClick={signIn} id="next-icon"/>
             </div>
             </div>
         ) 
+    }
 
         
-
+    const handleChange = (evt) => {
+        setUserName(evt.target.value)
     }
+
 
     function registerForm() {
         return(
             <div id="login-form">
             <div id="login-form-left">
-                <h2> Register</h2>
+                <h2 style={{marginBottom: "0px"}}> Register</h2>
+                <input id="login-input" onChange={handleChange} placeholder="Name"></input>
                 <input id="login-input" placeholder="E-mail"></input>
-                <input id="login-input" placeholder="Password"></input>
-                <input id="login-input" placeholder="Confirm password"></input>
+                <input type="password" id="login-input" placeholder="Password"></input>
+                <input type="password" id="login-input" placeholder="Confirm password"></input>
             </div>
             <div>
-                < MdNavigateNext onClick= { () => {props.closeOverlay()}} style={{top: "115px"}} id="next-icon"/>
+                < MdNavigateNext onClick={register} style={{top: "115px"}} id="next-icon"/>
             </div>
             </div>
         ) 
