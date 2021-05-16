@@ -55,7 +55,7 @@ Once run, the site will be deployed in your localhost and the browser will be la
 
 ### OPTIONAL: Step 3: Pull backend environment from AWS
 This step is marked as optional because while you do not need this step to run the app, you will need it to access Amplify's build pipeline.
-- amplify pull --appId d165oymlwnu85 --envName master
+amplify pull --appId d3c5ql377ffoge --envName staging
 
 After running this command, which pulls the backend environment from aws, you will be prompted to login to the Admin UI.
 You should receive an email from amplify to set up your login credentials to access the backend resources for this project.
