@@ -1,82 +1,108 @@
-# Introduction
+# Good Deed
+Good Deed is an online platform that connects passionate people and encourages collaboration on community building projects. We are a nonprofit, project-based social media network to fund and promote social impact projects through crowdsourcing. 
 
-This is a Starter React application for using the Sample app in the AWS AppSync console when building your GraphQL API. The Sample app creates a GraphQL schema and provisions Amazon DynamoDB resources, then connects them appropriately with Resolvers. The application demonstrates GraphQL Mutations, Queries and Subscriptions using AWS AppSync. You can use this for learning purposes or adapt either the application or the GraphQL Schema to meet your needs.
+A user will be able to create an account and from there either join a project, develop a new project, or register to join any project.
 
-![EventDetails](media/AllEvents.png)
-![EventDetails](media/CreateEvent.png)
+Each user -- donor or developer -- has an account with their profile consisting of the projects they have developed and registered to. After signing in, a user can view who registered to the events they created and contact them through their emails. 
 
-## Features
+## A user can:
+- Register a profile
+- Log in
+- Edit their profile
+- View other user's profile
+- Create a project
+- Add a project description to a new project
+- Add a category to a new project
+- Add information and requests to a new project
+- View list of projects available
+- Search a project
+- Filter projects by category
+- Participate in a project
+- Donate to a project
 
-- GraphQL Mutations
-  - Create new events
-  - Create comments on existing events
+## Documents from the Fall 2020:
+Other Good Deed documentation like the Project Management Plan, System Requirements Specification, and Pitch Presentation can be found [here](https://github.com/timurgordon/good-deed-web/tree/master/project-documents).
 
-- GraphQL Queries
-  - Get all events
-  - Get an event by Id
+## Local Setup
+ 
+Start by cloning this repository to your local directory.
+- git clone https://github.com/keremulcay/GoodDeed.git
 
-- GraphQL Subscriptions
-  - Real time updates for comments on an event
+The following steps require npm to be installed in your computer.
 
-- Authorization
-  - The app uses API Key as the authorization mechanism
+### Step 1: Install dependencies
 
-## AWS Setup
+- npm install 
 
-1. Navigate to the AWS AppSync console using the URL: http://console.aws.amazon.com/appsync/home
+installs dependencies such as cypress (for testing) and jsdoc(documentation) to node_modules from package.json
 
-2. Click on `Create API` and select the `Event App` under the `sample project` in the bottom pane, and select `Start`. Enter a API name of your choice. Click `Create`.
+- npm install -g @aws-amplify/cli
+
+installs Amplify Command Line Interface necessary to pull backend environment
+
+IMPORTANT: add the aws-exports.js file sent to the course instructor and TA into the src directory. This file includes the API key and is not pushed to git, yet kept locally. Without this file the backend functionalities won't work properly. Furthermore, if this project is run after the 21st of May, the API Key will have expired and a new API key will need to be generated, and the related field in aws-exports will need to be modified to use the new API key. Contact team members if you run this project after May 21st.
+
+### Step 2: Create documentation and deploy application on localhost
+You can create documentation using JSDoc with:
+- npm run docs
+
+This will automatically create a docs directory with the documentation created as index.html using JSDocs library.
+
+To run the application:
+- npm start
+
+Once run, the site will be deployed in your localhost and the browser will be launched.
+
+### OPTIONAL: Step 3: Pull backend environment from AWS
+This step is marked as optional because while you do not need this step to run the app, you will need it to access Amplify's build pipeline.
+amplify pull --appId d3c5ql377ffoge --envName staging
+
+After running this command, which pulls the backend environment from aws, you will be prompted to login to the Admin UI.
+You should receive an email from amplify to set up your login credentials to access the backend resources for this project.
+
+Warning: the link displayed on the command line that pops up in your browser to prompt you to login to Admin UI doesn't work in safari.
+We've observed it working in firefox and chrome. 
+
+Once pulled, Amplify CLI will prompt inputs for configuration. Input the following responses:
+
+- Choose your default editor: (choose any)
+- Choose type of app: Javascript
+- Javascript framework: react
+- Source directory path: src
+- Distribution directory path: build
+- Build command: npm run-script build
+- Start command: npm run-script start
+- Do you plan on modifying this backend: no.
+
+After this, you should get the following success messaage, which means that the backend environment is locally set up and amplify is locally configured.
+"Added backend environment config object to your project."
 
 
-## React Setup
 
-First, clone this repo:
+## Build file
+Our build file is stored in aws servers, as the backend build is initiated on the server side. The amplify.yml file is run continously and triggered by pushes to this repository. While the file in this directory is not used locally, it is included in the root directory for reference as ./amplify.yml.
 
-```
-git clone https://github.com/aws-samples/aws-mobile-appsync-events-starter-react.git
-cd ./aws-mobile-appsync-events-starter-react
-```
+## Testing
+We use Cypress to run tests. Cypress uses Mocha as the testing framework which could not work coherently with the default testing framework of React, Jest. While we did manage to produce test results with coverages through Jest, we could not report the code coverage of Cypress's end-to-end tests on the Jest's results. 
 
-Wait until the progress bar at the top has completed deploying your resources. Then from the integration page of your GraphQL API (you can click the name you entered in the left hand navigation). 
+## Linter
+We use the eslint library to lint our software. You can run the linter using the following commands.
+- npm run lint
+- npm run lint:fix (for automated fixing)
 
-On this same page, select `JavaScript` at the bottom to download your `aws-exports.js` configuration file by clicking the **Download Config** button. Replace the `aws-exports.js` file in the root of your app with the file you just downloaded.
+eslint is also run automatically whenever the project is built locally using npm start, generating a report on the command line about unused variables and code to be cleaned, that can be 'linted'.
 
-Install dependencies
-```
-npm install
-```
+We used the [AWS AppSync's Starter Project](https://github.com/keremulcay/GoodDeed/blob/main/README-extension.md).As a way to guide us with this project and used their tested/auto-generated code to develop our own work.Please check the link to learn more about this part.
 
-Start the application:
-```
-npm run start
-```
+## Make Targets
 
-## Application Walkthrough
-
-### ./src/App.js
-
-- Sets up the application navigation between screens using `BrowserRouter` from React Router.
-- Configures the `AWSAppSyncClient` using an API Key. This can be confugured to use Amazon Cognito Identity or Amazon Cognito User Pools as well.
-
-
-### ./Components/AllEvents.js
-
-- Uses Higher Order Components for making GraphQL calls to AWS AppSync.
-- View to display all the events from `./GraphQL/QueryAllEvents.js`
-- Allows you to delete individual events. This will use `./GraphQL/MutationDeleteEvent.js`
-
-### ./Components/NewEvent.js
-
-- Uses Higher Order Components for making GraphQL calls to AWS AppSync.
-- View to create a new event using `./GraphQL/MutationCreateEvent.js`
-
-### ./Components/ViewEvent.js and EventComment.js
-
-- Uses Higher Order Components for making GraphQL calls to AWS AppSync.
-- `ViewEvent` gets all the comments for a specific event when page loads with a GraphQL query defined in `./GraphQL/QueryGetEvent`
-- Once the page loads, `EventComments` sets up a GraphQL subscription using `./GraphQL/SubscriptionEventComments` to display any new comments on an event in realtime.
-
-### ./GraphQL Directory
-
-- Contains GraphQL queries and mutations for interacting with AWS AppSync.
+- prod:
+  - In order to build this project, you need to run the Makefile for both frontend and backend components of this project.  
+- tests: 
+  - Tests  will be executed through two ways. One, by visually checking deployed copy from Amazon Web Services (AWS). This will be carried through the AWS's Amplify service.                                                        If you need an access for that section please make a request. 
+  - The other way to make tests is supported by the Cypress. An example for the tests can be seen [here](https://github.com/timurgordon/good-deed-web/blob/master/cypress/integration/authenticator_spec.js). Cypress will help this project with the visual aid it provides. The test created through this platform will create videos of the test being performed. The previous example test has this [video](https://github.com/timurgordon/good-deed-web/blob/master/cypress/videos/authenticator_spec.js.mp4). 
+- dev_env:
+  - This project uses AWS for deploying. Specifically through using Amplify, local development environments are integrated. On amplify there are two options to commit changes  to. Developers can chose to deploy for staging or master branch of the project. 
+- docs:
+  - The documentation for the project will be automated as well. For this purpose JSDoc is utilized in this project. The documentation will be created with every build under [this file](https://github.com/timurgordon/good-deed-web/blob/master/docs/index.html)
 
