@@ -4,11 +4,16 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/cache": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
     "aws-amplify": "^4.0.1",
     "aws-appsync": "^3.0.1",
     "aws-appsync-react": "^3.0.1",
+    "better-docs": "^2.3.2",
+    "detect-port-alt": "^1.1.6",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
+    "jsdoc": "^3.6.7",
     "moment": "^2.19.2",
     "react": "^16.1.1",
     "react-apollo": "^2.0.1",
@@ -29,7 +34,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "docs": "jsdoc -c jsdoc.conf.json"
   },
   "browserslist": {
     "production": [

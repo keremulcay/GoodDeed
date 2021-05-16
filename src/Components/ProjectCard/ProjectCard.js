@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 
 /**
  * Component for rendering a project card.
- *
  * @component
  * @example
  * const title = "Good Deed Project"
@@ -14,7 +13,7 @@ import PropTypes from "prop-types"
  *   <ProjectCard title={title} location={location} image={image} />
  * )
  */
-export default function ProjectCard(props) {
+function ProjectCard(props) {
 
     if (props.type == "small") {return (
         <button href="/project-page"><div className="card-container-small">
@@ -37,6 +36,8 @@ export default function ProjectCard(props) {
            </a>
     )
 }
+
+export default ProjectCard;
 
 ProjectCard.propTypes = {
     /**

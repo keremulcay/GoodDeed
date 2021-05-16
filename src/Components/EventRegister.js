@@ -8,7 +8,11 @@ import SubsriptionEventComments from "../GraphQL/SubsriptionEventComments";
 import NewRegistry from "./NewRegistry";
 
 
-
+/**
+ * Component for registering to an event.
+ * Makes API call to create new registrations, and displays success message on registration.
+ * @component
+ */
 class EventRegister extends Component {
 
     subscription;

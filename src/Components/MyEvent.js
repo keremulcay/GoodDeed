@@ -9,6 +9,11 @@ import EventComments from "./EventComments";
 import EventRegister from "./EventRegister";
 
 
+/**
+ * Component for rendering project card of owner.
+ *
+ * @component
+ */
 class MyEvent extends Component {
 
     render() {

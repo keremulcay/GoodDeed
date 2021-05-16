@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-export default class DateTimePickerCustomInput extends Component {
+/**
+ * UI Component for picking date and time on event creation.
+ * @component
+ */
+class DateTimePickerCustomInput extends Component {
 
     render() {
         return (
@@ -13,8 +17,11 @@ export default class DateTimePickerCustomInput extends Component {
     }
 }
 
+export default DateTimePickerCustomInput;
+
 DateTimePickerCustomInput.propTypes = {
     onClick: PropTypes.func,
     value: PropTypes.string,
     id: PropTypes.string,
 };
+

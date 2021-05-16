@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar'
 import './NavBar.css'
 
-/* <NavBar />
-* Default site NavBar
+
+/**
+ * Default site NavBar
 * Navigates amongst menu items, renders searchbox component.
-*/
-export default function NavBar(props) {
+ * @component
+ */
+function NavBar(props) {
     if (props.logged) {
     return (
             <nav>
@@ -36,3 +38,5 @@ export default function NavBar(props) {
 
     }
 }
+
+export default NavBar;

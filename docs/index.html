@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Introduction</h1>
+<p>This is a Starter React application for using the Sample app in the AWS AppSync console when building your GraphQL API. The Sample app creates a GraphQL schema and provisions Amazon DynamoDB resources, then connects them appropriately with Resolvers. The application demonstrates GraphQL Mutations, Queries and Subscriptions using AWS AppSync. You can use this for learning purposes or adapt either the application or the GraphQL Schema to meet your needs.</p>
+<p><img src="media/AllEvents.png" alt="EventDetails">
+<img src="media/CreateEvent.png" alt="EventDetails"></p>
+<h2>Features</h2>
+<ul>
+<li>
+<p>GraphQL Mutations</p>
+<ul>
+<li>Create new events</li>
+<li>Create comments on existing events</li>
+</ul>
+</li>
+<li>
+<p>GraphQL Queries</p>
+<ul>
+<li>Get all events</li>
+<li>Get an event by Id</li>
+</ul>
+</li>
+<li>
+<p>GraphQL Subscriptions</p>
+<ul>
+<li>Real time updates for comments on an event</li>
+</ul>
+</li>
+<li>
+<p>Authorization</p>
+<ul>
+<li>The app uses API Key as the authorization mechanism</li>
+</ul>
+</li>
+</ul>
+<h2>AWS Setup</h2>
+<ol>
+<li>
+<p>Navigate to the AWS AppSync console using the URL: http://console.aws.amazon.com/appsync/home</p>
+</li>
+<li>
+<p>Click on <code>Create API</code> and select the <code>Event App</code> under the <code>sample project</code> in the bottom pane, and select <code>Start</code>. Enter a API name of your choice. Click <code>Create</code>.</p>
+</li>
+</ol>
+<h2>React Setup</h2>
+<p>First, clone this repo:</p>
+<pre class="prettyprint source"><code>git clone https://github.com/aws-samples/aws-mobile-appsync-events-starter-react.git
+cd ./aws-mobile-appsync-events-starter-react
+</code></pre>
+<p>Wait until the progress bar at the top has completed deploying your resources. Then from the integration page of your GraphQL API (you can click the name you entered in the left hand navigation).</p>
+<p>On this same page, select <code>JavaScript</code> at the bottom to download your <code>aws-exports.js</code> configuration file by clicking the <strong>Download Config</strong> button. Replace the <code>aws-exports.js</code> file in the root of your app with the file you just downloaded.</p>
+<p>Install dependencies</p>
+<pre class="prettyprint source"><code>npm install
+</code></pre>
+<p>Start the application:</p>
+<pre class="prettyprint source"><code>npm run start
+</code></pre>
+<h2>Application Walkthrough</h2>
+<h3>./src/App.js</h3>
+<ul>
+<li>Sets up the application navigation between screens using <code>BrowserRouter</code> from React Router.</li>
+<li>Configures the <code>AWSAppSyncClient</code> using an API Key. This can be confugured to use Amazon Cognito Identity or Amazon Cognito User Pools as well.</li>
+</ul>
+<h3>./Components/AllEvents.js</h3>
+<ul>
+<li>Uses Higher Order Components for making GraphQL calls to AWS AppSync.</li>
+<li>View to display all the events from <code>./GraphQL/QueryAllEvents.js</code></li>
+<li>Allows you to delete individual events. This will use <code>./GraphQL/MutationDeleteEvent.js</code></li>
+</ul>
+<h3>./Components/NewEvent.js</h3>
+<ul>
+<li>Uses Higher Order Components for making GraphQL calls to AWS AppSync.</li>
+<li>View to create a new event using <code>./GraphQL/MutationCreateEvent.js</code></li>
+</ul>
+<h3>./Components/ViewEvent.js and EventComment.js</h3>
+<ul>
+<li>Uses Higher Order Components for making GraphQL calls to AWS AppSync.</li>
+<li><code>ViewEvent</code> gets all the comments for a specific event when page loads with a GraphQL query defined in <code>./GraphQL/QueryGetEvent</code></li>
+<li>Once the page loads, <code>EventComments</code> sets up a GraphQL subscription using <code>./GraphQL/SubscriptionEventComments</code> to display any new comments on an event in realtime.</li>
+</ul>
+<h3>./GraphQL Directory</h3>
+<ul>
+<li>Contains GraphQL queries and mutations for interacting with AWS AppSync.</li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DateTimePickerCustomInput.html">DateTimePickerCustomInput</a></li><li><a href="EventRegister.html">EventRegister</a></li><li><a href="module.exports.html">exports</a></li><li><a href="MyEvent.html">MyEvent</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="ProjectCard.html">ProjectCard</a></li><li><a href="ProjectsBar.html">ProjectsBar</a></li><li><a href="SearchBar.html">SearchBar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun May 16 2021 06:38:39 GMT+0300 (GMT+03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

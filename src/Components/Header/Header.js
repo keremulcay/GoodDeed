@@ -5,11 +5,12 @@ import background from '../../images/pexels-aleksey-kuprikov-3493777.jpg'
 import './Header.css'
 
 
-/* <Header />
-* Dynamic (future) landing page header.
-* Displays title and description of selected good deed projects.
-*/ 
-export default function Header() {
+/**
+ * Dynamic (future) landing page header.
+* Displays site title and description good deed platform in the landing page.
+ * @component
+ */
+function Header() {
     return (
         <div className="header-container">
             <h1> Good Deed Platform </h1>
@@ -17,3 +18,5 @@ export default function Header() {
         </div>
     )
 }
+
+export default Header;

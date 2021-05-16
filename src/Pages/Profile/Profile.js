@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { Redirect, withRouter } from 'react-router-dom';
 import './Profile.css';
@@ -7,6 +7,8 @@ import AllEvents from '../../Components/AllEvents';
 import { Auth } from 'aws-amplify';
 
 function Profile(props) {
+
+    const [user, setUser] = useState({})
 
     async function signOut() {
         try {
@@ -30,10 +32,19 @@ function renderProjectCards() {
     )
 }
 
+    // fetches user information from auth.
+	async function getUser() {
+		const { attributes } = await Auth.currentAuthenticatedUser();
+		return attributes;
+	}
+
+    // gets and sets user information on page render
+	useEffect(async () => { setUser(await getUser()); }, []);
+
 		return(
             <div >
 			<div id="profile-container">
-					<h1 style={{color: "white", marginTop: "45px"}} id="name">{props.user}</h1>
+					<h1 style={{color: "white", marginTop: "45px"}} id="name">{user.name}</h1>
                     <a className="logout-button" onClick={signOut} href="/" id="sign-in-btn"> Sign Out </a>
                     { renderProjectCards() }
 			</div>

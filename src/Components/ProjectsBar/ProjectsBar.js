@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './ProjectsBar.css'
 
-
-/* <ProjectsBar />
-* Bar with filtering, sorting and category selection functionality.
+/**
+ * Bar with filtering, sorting and category selection functionality.
 * Rendered above project cards in <Projects /> for project navigation.
-*/
-export default function ProjectsBar(props) {
+ * @component
+ */
+function ProjectsBar(props) {
     const [active, setActive] = useState("All")
 
     /* Function that returns category selection buttons for projects navbar */
@@ -42,3 +42,4 @@ function handleClick(event) {
             </div>
     )
 }
+export default ProjectsBar;

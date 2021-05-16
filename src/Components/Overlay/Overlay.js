@@ -5,8 +5,12 @@ import { MdNavigateNext } from 'react-icons/md';
 import { Auth } from 'aws-amplify';
 
 
-
-export default function Overlay(props) {
+/**
+ * Overlay
+* Component responsible for logging in, registering, and authentication.
+ * @component
+ */
+function Overlay(props) {
 
     async function signUp() {
         const {name, username, password} = formData
@@ -108,3 +112,4 @@ export default function Overlay(props) {
 		)
 }
 
+export default Overlay;
