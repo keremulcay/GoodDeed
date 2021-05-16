@@ -40,7 +40,7 @@ installs dependencies such as cypress (for testing) and jsdoc(documentation) to 
 
 installs Amplify Command Line Interface necessary to pull backend environment
 
-IMPORTANT: add the aws-exports.js file sent to the course instructor and TA into the src directory.
+IMPORTANT: add the aws-exports.js file sent to the course instructor and TA into the src directory. This file includes the API key and is not pushed to git, yet kept locally. Without this file the backend functionalities won't work properly. Furthermore, if this project is run after the 21st of May, the API Key will have expired and a new API key will need to be generated, and the related field in aws-exports will need to be modified to use the new API key. Contact team members if you run this project after May 21st.
 
 ### Step 2: Create documentation and deploy application on localhost
 You can create documentation using JSDoc with:
