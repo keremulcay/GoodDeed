@@ -20,7 +20,7 @@ Each user -- donor or developer -- has an account with their profile consisting 
 - Participate in a project
 - Donate to a project
 
-## Documentation
+## Documents from the Fall 2020:
 Other Good Deed documentation like the Project Management Plan, System Requirements Specification, and Pitch Presentation can be found [here](https://github.com/timurgordon/good-deed-web/tree/master/project-documents).
 
 ## Local Setup
