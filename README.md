@@ -1,9 +1,9 @@
 # Good Deed
 Good Deed is an online platform that connects passionate people and encourages collaboration on community building projects. We are a nonprofit, project-based social media network to fund and promote social impact projects through crowdsourcing. 
 
-A user will be able to create an account and from there either join a project, develop a new project, or donate to any project whether in the form of money, materials, or time.
+A user will be able to create an account and from there either join a project, develop a new project, or register to join any project.
 
-Each user -- donor or developer -- has an account with their profile consisting of the projects they have developed and donated to. Our numerical metrics of popularity is the number of projects and the impact made by a user, quantified by statistics from the projects the user has participated in.
+Each user -- donor or developer -- has an account with their profile consisting of the projects they have developed and registered to. After signing in, a user can view who registered to the events they created and contact them through their emails. 
 
 ## A user can:
 - Register a profile
@@ -26,7 +26,7 @@ Other Good Deed documentation like the Project Management Plan, System Requireme
 ## Local Setup
  
 Start by cloning this repository to your local directory.
-- git clone https://github.com/timurgordon/good-deed-web.git
+- git clone https://github.com/keremulcay/GoodDeed.git
 
 The following steps require npm to be installed in your computer.
 
@@ -40,8 +40,8 @@ installs dependencies such as cypress (for testing) and jsdoc(documentation) to 
 
 installs Amplify Command Line Interface necessary to pull backend environment
 
-### Step 2: Pull backend environment from AWS
-
+### OPTIONAL: Step 2: Pull backend environment from AWS
+This step is marked as optional because while you do not need this step to run the app, you will need it access Amplify's build pipeline.
 - amplify pull --appId d165oymlwnu85 --envName master
 
 After running this command, which pulls the backend environment from aws, you will be prompted to login to the Admin UI.
@@ -74,9 +74,6 @@ To run the application:
 - npm start
 
 Once run, the site will be deployed in your localhost and the browser will be launched.
-
-### Important: Current site information
-As the platform is under development, we've added authentication at the landing page. In order to view the current site, the user must register, verify their email, and sign in to the platform.
 
 ## Build file
 Our build file is stored in aws servers, as the backend build is initiated on the server side. The amplify.yml file is run continously and triggered by pushes to this repository. While the file in this directory is not used locally, it is included in the root directory for reference as ./amplify.yml.
