@@ -40,7 +40,20 @@ installs dependencies such as cypress (for testing) and jsdoc(documentation) to 
 
 installs Amplify Command Line Interface necessary to pull backend environment
 
-### OPTIONAL: Step 2: Pull backend environment from AWS
+IMPORTANT: add the aws-exports.js file sent to the course instructor and TA into the src directory. This file includes the API key and is not pushed to git, yet kept locally. Without this file the backend functionalities won't work properly. Furthermore, if this project is run after the 21st of May, the API Key will have expired and a new API key will need to be generated, and the related field in aws-exports will need to be modified to use the new API key. Contact team members if you run this project after May 21st.
+
+### Step 2: Create documentation and deploy application on localhost
+You can create documentation using JSDoc with:
+- npm run docs
+
+This will automatically create a docs directory with the documentation created as index.html using JSDocs library.
+
+To run the application:
+- npm start
+
+Once run, the site will be deployed in your localhost and the browser will be launched.
+
+### OPTIONAL: Step 3: Pull backend environment from AWS
 This step is marked as optional because while you do not need this step to run the app, you will need it to access Amplify's build pipeline.
 - amplify pull --appId d165oymlwnu85 --envName master
 
@@ -64,16 +77,7 @@ Once pulled, Amplify CLI will prompt inputs for configuration. Input the followi
 After this, you should get the following success messaage, which means that the backend environment is locally set up and amplify is locally configured.
 "Added backend environment config object to your project."
 
-### Step 3: Create documentation and deploy application on localhost
-You can create documentation using JSDoc with:
-- npm run docs
 
-This will automatically create a docs directory with the documentation created as index.html using JSDocs library.
-
-To run the application:
-- npm start
-
-Once run, the site will be deployed in your localhost and the browser will be launched.
 
 ## Build file
 Our build file is stored in aws servers, as the backend build is initiated on the server side. The amplify.yml file is run continously and triggered by pushes to this repository. While the file in this directory is not used locally, it is included in the root directory for reference as ./amplify.yml.
