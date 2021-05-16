@@ -85,7 +85,15 @@ Our build file is stored in aws servers, as the backend build is initiated on th
 ## Testing
 We use Cypress to run tests. Cypress uses Mocha as the testing framework which could not work coherently with the default testing framework of React, Jest. While we did manage to produce test results with coverages through Jest, we could not report the code coverage of Cypress's end-to-end tests on the Jest's results. 
 
+## Linter
+We use the eslint library to lint our software. You can run the linter using the following commands.
+- npm run lint
+- npm run lint:fix (for automated fixing)
+
+eslint is also run automatically whenever the project is built locally using npm start, generating a report on the command line about unused variables and code to be cleaned, that can be 'linted'.
+
 We used the [AWS AppSync's Starter Project](https://github.com/keremulcay/GoodDeed/blob/main/README-extension.md).As a way to guide us with this project and used their tested/auto-generated code to develop our own work.Please check the link to learn more about this part.
+
 ## Make Targets
 
 - prod:
