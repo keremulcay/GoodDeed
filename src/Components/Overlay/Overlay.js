@@ -2,10 +2,30 @@ import React, { useState } from 'react';
 import './Overlay.css';
 import { IoMdClose } from 'react-icons/io';
 import { MdNavigateNext } from 'react-icons/md';
+import { Auth } from 'aws-amplify';
+
 
 export default function Overlay(props) {
 
+    async function signUp() {
+        const {name, username, password} = formData
+        try {
+            const { user } = await Auth.signUp({
+                username,
+                password,
+                attributes: {
+                    name,          // optional
+                }
+            });
+            console.log(user);
+        } catch (error) {
+            console.log('error signing up:', error);
+        }
+    }
+
     const [form, setForm] = useState("login")
+    const emptyForm = {"name": "", "username": "", "password" : ""}
+    const [formData, setFormData] = useState(emptyForm)
     const [userName, setUserName] = useState("")
 
     function signIn() {
@@ -13,8 +33,10 @@ export default function Overlay(props) {
         props.closeOverlay()
     }
 
-    function register() {
+    async function register() {
         props.setUser(userName)
+        console.log("register: ", formData)
+        signUp()
         props.loggedIn()
         props.closeOverlay()
     }
@@ -38,7 +60,8 @@ export default function Overlay(props) {
 
         
     const handleChange = (evt) => {
-        setUserName(evt.target.value)
+        if (evt.target.name == "name") {setUserName(evt.target.value)}
+        setFormData( {...formData, [evt.target.name]: evt.target.value} )
     }
 
 
@@ -47,9 +70,9 @@ export default function Overlay(props) {
             <div id="login-form">
             <div id="login-form-left">
                 <h2 style={{marginBottom: "0px"}}> Register</h2>
-                <input id="login-input" onChange={handleChange} placeholder="Name"></input>
-                <input id="login-input" placeholder="E-mail"></input>
-                <input type="password" id="login-input" placeholder="Password"></input>
+                <input id="login-input" name="name" onChange={handleChange} placeholder="Name"></input>
+                <input id="login-input" name="username" onChange={handleChange} placeholder="E-mail"></input>
+                <input type="password" name="password" id="login-input" onChange={handleChange} placeholder="Password"></input>
                 <input type="password" id="login-input" placeholder="Confirm password"></input>
             </div>
             <div>

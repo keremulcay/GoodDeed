@@ -23,6 +23,10 @@ import background from './images/pexels-aleksey-kuprikov-3493777.jpg'
 import NavBar from './Components/NavBar/NavBar'
 import Overlay from './Components/Overlay/Overlay'
 
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
+
 const Home = () => (
   <div className="rs-grid-container-fluid app-container">
     <Landing/>

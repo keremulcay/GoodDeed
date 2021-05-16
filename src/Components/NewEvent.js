@@ -73,7 +73,7 @@ class NewEvent extends Component {
                 <div className="ui form">
                     <div className="field required eight wide">
                         <label htmlFor="name">Name</label>
-                        <input type="text" id="name" value={event.name} onChange={this.handleChange.bind(this, 'name')} />
+                        <input type="text" id="where" value={event.name} onChange={this.handleChange.bind(this, 'name')} />
                     </div>
                     <div className="field required eight wide">
                         <label htmlFor="when">When</label>
