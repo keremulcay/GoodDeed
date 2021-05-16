@@ -5,6 +5,7 @@ import { MdNavigateNext } from 'react-icons/md';
 import { Auth } from 'aws-amplify';
 
 
+
 export default function Overlay(props) {
 
     async function signUp() {
@@ -23,12 +24,23 @@ export default function Overlay(props) {
         }
     }
 
+    async function signIn() {
+        const {username, password} = formData
+        try {
+            const user = await Auth.signIn(username, password);
+            console.log(user)
+        } catch (error) {
+            console.log('error signing in', error);
+        }
+    }    
+
     const [form, setForm] = useState("login")
     const emptyForm = {"name": "", "username": "", "password" : ""}
     const [formData, setFormData] = useState(emptyForm)
     const [userName, setUserName] = useState("")
 
-    function signIn() {
+    function logIn() {
+        signIn()
         props.loggedIn()
         props.closeOverlay()
     }
@@ -46,13 +58,13 @@ export default function Overlay(props) {
             <div id="login-form">
             <div id="login-form-left">
                 <h2> Sign In</h2>
-                <input id="login-input" placeholder="E-mail"></input>
-                <input type="password" id="login-input" placeholder="Password"></input>
+                <input id="login-input" name="username" onChange={handleChange} placeholder="E-mail"></input>
+                <input type="password" name="password" id="login-input" onChange={handleChange} placeholder="Password"></input>
                 <a onClick={() => setForm("register")} style={{marginTop: "15px", cursor: "pointer"}}>Don't have an account? Sign Up</a>
                 <a onClick={() => setForm("register")} style={{marginTop: "15px", cursor: "pointer"}}>Forgot your password?</a>
             </div>
             <div>
-                < MdNavigateNext onClick={signIn} id="next-icon"/>
+                < MdNavigateNext onClick={logIn} id="next-icon"/>
             </div>
             </div>
         ) 

@@ -4,9 +4,17 @@ import { Redirect, withRouter } from 'react-router-dom';
 import './Profile.css';
 import background from '../../images/pexels-aleksey-kuprikov-3493777.jpg'
 import AllEvents from '../../Components/AllEvents';
+import { Auth } from 'aws-amplify';
 
 function Profile(props) {
 
+    async function signOut() {
+        try {
+            await Auth.signOut();
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+    }
 
     function signOut() {
         props.loggedOut()
